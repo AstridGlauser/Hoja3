@@ -1,12 +1,13 @@
 //iNTERFAZ A implementar
-import java.util.ArrayList;
+
+import java.util.Vector;
 
 /*
  * @param <T> can be any object to sort
  */
 
 public interface Comparator<T> {
-public ArrayList<T> sort(ArrayList<T> data);
+public Vector<T> sort(Vector<T> data);
 }
 /*
           _____                    _____             _____                    _____                    _____                   _______         
