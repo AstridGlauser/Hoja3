@@ -8,7 +8,7 @@ public class inicio {
         String texto = "";
         for (int i = 0; i < cantidad; i++) {
             int numero = (int) (Math.random() * cantidad);
-            texto += numero + " ";
+            texto += numero + "\n";
         }
       
    
