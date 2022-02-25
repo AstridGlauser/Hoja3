@@ -23,5 +23,24 @@ public class inicio {
          
         } 
 
+        try{
+        FileReader Datos = new FileReader("numer.txt");
+        BufferedReader Lector = new BufferedReader(Datos);
+        String x = "";
+        while (x != null) {
+            x = Lector.readLine();//se lee linea por linea
+            if (x == null) {
+                Lector.close();//para al no encontrar informacion
+                break;
+            }
+            info.add(x);//agrega al vector info
+        }
+    }
+        catch (Exception e) {
+            System.out.println("Algo salio mal");//capta la excepcion
+        }
+
+        System.out.println(info);
+
     }
 }
