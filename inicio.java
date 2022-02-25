@@ -6,6 +6,7 @@ public class inicio {
     public static void main(String args[]) {
         int cantidad = 3000;
         String texto = "";
+	Vector<Integer> info = new Vector<Integer>();
         for (int i = 0; i < cantidad; i++) {
             int numero = (int) (Math.random() * cantidad);
             texto += numero + "\n";
@@ -33,7 +34,7 @@ public class inicio {
                 Lector.close();//para al no encontrar informacion
                 break;
             }
-            info.add(x);//agrega al vector info
+                info.add(Integer.parseInt(x));//agrega al vector info
         }
     }
         catch (Exception e) {
