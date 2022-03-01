@@ -1,7 +1,10 @@
 
+import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.util.Vector;
 public class inicio {
     public static void main(String args[]) {
         int cantidad = 3000;
@@ -12,13 +15,13 @@ public class inicio {
             texto += numero + "\n";
         }
       
-   
+        
         try {
-
+            
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("numer.txt"));
 			bufferedWriter.write(texto);
 			bufferedWriter.close();
-
+                        
         } catch (IOException exception) {
          System.out.println("ERROR");
          
@@ -32,6 +35,7 @@ public class inicio {
             x = Lector.readLine();//se lee linea por linea
             if (x == null) {
                 Lector.close();//para al no encontrar informacion
+                
                 break;
             }
                 info.add(Integer.parseInt(x));//agrega al vector info
@@ -40,8 +44,16 @@ public class inicio {
         catch (Exception e) {
             System.out.println("Algo salio mal");//capta la excepcion
         }
-
+        System.out.println("Unsorted Array");
         System.out.println(info);
+        System.out.println("Sorted Array Gnome type");
+        /*
+        Como se mostrara el resultado?
+        */
+        GNOME g = new GNOME();
+        g.sort(info);
+
+        
 
     }
 }
