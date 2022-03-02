@@ -11,9 +11,9 @@ public class Sorter<T> {
         this.comparador = comparador;
     }
     
-    public void ordenar(Vector<T> toSort){//ejecutar el ordenamiento
+    public void ordenar(Vector<T> toSort,int izquierda,int derecha){//ejecutar el ordenamiento
         long startTime = System.nanoTime();//hora de inicio en miliseconds
-        comparador.sort(toSort);
+        comparador.sort(toSort,izquierda,derecha);
         long endTime = System.nanoTime();//momento de finalizacion
         long sortTime = (long) ((long)(endTime - startTime)/1e6);//obtener el tiempo de tardado para el sorteado
         System.out.println("Tiempo empleado para el ordenado : " + String.valueOf(sortTime) + "ms");//mostrar el tiempo empleado para el ordenamiento
