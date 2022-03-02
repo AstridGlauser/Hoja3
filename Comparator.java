@@ -7,7 +7,7 @@ import java.util.Vector;
  */
 
 public interface Comparator<T> {
-public void sort(Vector<T> data);
+public void sort(Vector<T> data,int izquierda,int derecha);
 }
 /*
           _____                    _____             _____                    _____                    _____                   _______         
