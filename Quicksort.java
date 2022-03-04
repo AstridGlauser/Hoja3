@@ -47,3 +47,4 @@ public class Quicksort<T> implements Comparator<T> {
 }
 }
 }
+//adaptado de https://www.youtube.com/watch?v=N7f51HsrHWc&t=550s
