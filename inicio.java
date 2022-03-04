@@ -93,7 +93,7 @@ public class inicio {
         System.out.println("2. MergeSort");
         System.out.println("3. QuickSort");
         System.out.println("4. RadixSort");
-        System.out.println("6. BubbleSort");
+        System.out.println("5. BubbleSort");
         boolean run = true;//bandera para ver si realiz[o una eleccion valida, asi finalizar el programa
         while(run){
             try{
@@ -103,11 +103,43 @@ public class inicio {
                     case 1 ->{
                         System.out.println("ArrayDesordenado");
                         st = new Sorter(new GNOME());
-                        st.ordenar(info);
+                        st.ordenar(info,0,0);
                         run = false;
                         saveSorted(info);
                         System.out.println("ArrayOrdenado");
-                        st.ordenar(info);
+                        st.ordenar(info,0,0);
+                    }
+                    case 2 ->{
+                        System.out.println("Nothing here, coming soon");
+                    
+                    }
+                    case 3 ->{//quicksort
+                        System.out.println("ArrayDesordenado");
+                        st = new Sorter(new Quicksort());
+                        st.ordenar(info,0,info.size()-1);
+                        run = false;
+                        saveSorted(info);
+                        System.out.println("ArrayOrdenado");
+                        st.ordenar(info,0,info.size()-1);
+                    }
+                    case 4 ->{
+                        System.out.println("ArrayDesordenado");
+                        st = new Sorter(new radixSort());
+                        st.ordenar(info,0,0);
+                        run = false;
+                        saveSorted(info);
+                        System.out.println("ArrayOrdenado");
+                        st.ordenar(info,0,0);
+                    }
+                    case 5 ->{//bulble
+                        System.out.println("ArrayDesordenado");
+                        st = new Sorter(new BubbleSort());
+                        st.ordenar(info,0,0);
+                        run = false;
+                        saveSorted(info);
+                        System.out.println("ArrayOrdenado");
+                        st.ordenar(info,0,0);
+                    
                     }
                 //aca va el resto :v 
                 }
