@@ -7,7 +7,7 @@ import java.util.Vector;
 
 public class GNOME<T> implements Comparator<T> {
     @Override
-    public void sort(Vector<T> data) {
+    public void sort(Vector<T> data,int a, int b) {
         if(data.isEmpty()){
         
         }else{

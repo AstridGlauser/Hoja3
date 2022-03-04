@@ -1,6 +1,6 @@
 import java.util.Vector;
 
-public class QuickSort<T> implements Comparator<T> {
+public class Quicksort<T> implements Comparator<T> {
     @Override
     public void sort(Vector<T> data, int izquierda, int derecha) {
         // izquierda = 0;
