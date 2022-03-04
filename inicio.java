@@ -125,11 +125,11 @@ public class inicio {
                     case 4 ->{
                         System.out.println("ArrayDesordenado");
                         st = new Sorter(new radixSort());
-                        st.ordenar(info,0,0);
+                        st.ordenar(info,info.size(),0);
                         run = false;
                         saveSorted(info);
                         System.out.println("ArrayOrdenado");
-                        st.ordenar(info,0,0);
+                        st.ordenar(info,info.size(),0);
                     }
                     case 5 ->{//bulble
                         System.out.println("ArrayDesordenado");
