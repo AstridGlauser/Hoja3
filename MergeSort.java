@@ -1,98 +1,74 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Comparator;
 
+import java.util.Vector;
+
+//Adaptado de https://www.withexample.com/merge-sort-using-arraylist-java-example/
 public class MergeSort<T> implements Comparator<T> {
 
-    /* 
-    * This method uses generics and implements the merge sort method.
-    * recieved generic values, generic class and 1 instance of comparator interface
-    */
-
-    public <T> void sort(T[] values, Class<T> clazz, Comparator<T> comparator) {
-        if (values == null) {
-            throw new IllegalArgumentException("values is null.");
-        }
-
-        // recursion exit criteria.
-        if (values.length < 2) {
-            return;
-        }
-
-        // segregate the values array into 2 halves.
-        int median = values.length / 2;
-        int leftSize = median;
-        int rightSize = values.length - median;
-
-        // construct the left array.
-        T[] left = (T[]) Array.newInstance(clazz, leftSize);
-        for (int l = 0; l < leftSize; ++l) {
-            left[l] = values[l];
-        }
-
-        // construct the right array.
-        T[] right = (T[]) Array.newInstance(clazz, rightSize);
-        for (int r = 0; r < rightSize; ++r) {
-            right[r] = values[leftSize + r];
-        }
-
-        // recursively do merge sort on either side of the array.
-        sort(left, clazz, comparator);
-        sort(right, clazz, comparator);
-
-        // merges the left and right and keeps the intermediate
-        // values array sorted as it works it's way up.
-        _merge(values, left, right, comparator);
-
+        private Vector<T>  inputArray;
+    
+    public Vector<T>  getSortedArray() {
+        return inputArray;
     }
-
-
-
-    private <T> void _merge(T[] values, T[] left, T[] right, Comparator<T> comparator) {
-        int leftIndex = 0;
-        int rightIndex = 0;
-        int sortedIndex = 0;
-
-        while (leftIndex < left.length && rightIndex < right.length) {
-            int comparison = comparator.compare(left[leftIndex], right[rightIndex]);
-            if (comparison <= 0) {
-                values[sortedIndex] = left[leftIndex];
+ 
+    public MergeSort(Vector<T>  inputArray){
+        this.inputArray = inputArray;
+    }
+    
+   
+    
+    public void divide(int startIndex,int endIndex){
+        
+        //Divide till you breakdown your list to single element
+        if(startIndex<endIndex && (endIndex-startIndex)>=1){
+            int mid = (endIndex + startIndex)/2;
+            divide(startIndex, mid);
+            divide(mid+1, endIndex);        
+            
+            //merging Sorted array produce above into one sorted array
+            merger(startIndex,mid,endIndex);            
+        }       
+    }   
+    
+    public void merger(int startIndex,int midIndex,int endIndex){
+        
+        //Below is the mergedarray that will be sorted array Array[i-midIndex] , Array[(midIndex+1)-endIndex]
+        Vector<T>  mergedSortedArray = new Vector<T> ();
+        
+        int leftIndex = startIndex;
+        int rightIndex = midIndex+1;
+        
+        while(leftIndex<=midIndex && rightIndex<=endIndex){
+            if((int)inputArray.get(leftIndex)<=(int)inputArray.get(rightIndex)){
+                mergedSortedArray.add(inputArray.get(leftIndex));
                 leftIndex++;
-            } else {
-                values[sortedIndex] = right[rightIndex];
+            }else{
+                mergedSortedArray.add(inputArray.get(rightIndex));
                 rightIndex++;
             }
-            sortedIndex++;
-        }
-
-        // Handle the left over elements if any in the left side
-        // and places them in the sorted array.
-        while (leftIndex < left.length) {
-            values[sortedIndex] = left[leftIndex];
+        }       
+        
+        //Either of below while loop will execute
+        while(leftIndex<=midIndex){
+            mergedSortedArray.add(inputArray.get(leftIndex));
             leftIndex++;
-            sortedIndex++;
         }
-
-        // Handle the left over elements if any in the right side.
-        // and places them in the sorted array.
-        while (rightIndex < right.length) {
-            values[sortedIndex] = right[rightIndex];
+        
+        while(rightIndex<=endIndex){
+            mergedSortedArray.add(inputArray.get(rightIndex));
             rightIndex++;
-            sortedIndex++;
+        }
+        
+        int i = 0;
+        int j = startIndex;
+        //Setting sorted array to original one
+        while(i<mergedSortedArray.size()){
+            inputArray.set(j, mergedSortedArray.get(i++));
+            j++;
         }
     }
 
-    public static void main(String[] args) {
-        Integer[] values = new Integer[] { 5, 0, 10, 4, 1, 8, 3, 9, 6, 2, 7 };
-
-        new MergeSort().sort(values, Integer.class, new Comparator<Integer>() {
-
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o1.compareTo(o2);
-            }
-        });
-
-        System.out.println(Arrays.toString(values));
+    @Override
+    public void sort(Vector<T> data, int izquierda, int derecha) {
+       divide(0, this.inputArray.size()-1);
     }
 }
