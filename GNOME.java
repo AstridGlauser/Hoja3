@@ -8,6 +8,7 @@ import java.util.Vector;
 public class GNOME<T> implements Comparator<T> {
     @Override
     public void sort(Vector<T> data,int a, int b) {
+        if(data!=null){
         if(data.isEmpty()){
         
         }else{
@@ -31,6 +32,7 @@ public class GNOME<T> implements Comparator<T> {
         }
     }
    
+}
 }
 /*
           _____                    _____             _____                    _____                    _____                   _______         
