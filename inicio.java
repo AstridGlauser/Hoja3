@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.Vector;
+
+
 public class inicio {
     public static void main(String args[]) {
         int cantidad = 0;
@@ -45,6 +47,8 @@ public class inicio {
         }
         }catch(InputMismatchException e){
             System.out.println("Caraccter invalido");
+            System.out.println("Intente dew Nuevo");
+            opcion = reader.nextInt();
         }
         
         }
@@ -110,7 +114,13 @@ public class inicio {
                         st.ordenar(info,0,0);
                     }
                     case 2 ->{
-                        System.out.println("Nothing here, coming soon");
+                        System.out.println("ArrayDesordenado");
+                        st = new Sorter(new MergeSort(info));
+                        st.ordenar(info,info.size(),0);
+                        run = false;
+                        saveSorted(info);
+                        System.out.println("ArrayOrdenado");
+                        st.ordenar(info,info.size(),0);
                     
                     }
                     case 3 ->{//quicksort
